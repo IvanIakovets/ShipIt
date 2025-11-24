@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ParcelBox {
     private  ParcelsType parcelsType;
@@ -17,7 +16,7 @@ public class ParcelBox {
         return parcelBox;
     }
 
-    protected void addParcel(Parcel parcel) {
+    protected boolean addParcel(Parcel parcel) {
         int safeBoxSpace = maxBoxWeight-totalBoxWeight;
         if (maxBoxWeight <= totalBoxWeight) {
             parcelBox.add(parcel);
@@ -25,10 +24,12 @@ public class ParcelBox {
                     " успешно добавлена в коробку " + parcelsType);
             totalBoxWeight += parcel.getWeight();
             System.out.println("Осталось свободного места: " + safeBoxSpace);
+            return true;
         } else {
             System.out.println("Посылка слишком тяжелая, попробуйте добавить другую. \n" +
                     "Осталось свободного веса: " + safeBoxSpace);
             System.out.println("Если посылок с подходящим весом нет, то создайте новую коробку.");
+            return false;
         }
     }
 

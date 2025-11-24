@@ -22,7 +22,7 @@ public class PerishableParcel extends Parcel {
     }
 
     protected boolean isExpired(int currentDay, int sendDay, int timeToLive) {
-        return currentDay > (sendDay + timeToLive);
+        return currentDay <= (sendDay + timeToLive);
     }
 
 }
